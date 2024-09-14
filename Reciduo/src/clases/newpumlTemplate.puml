@@ -1,0 +1,68 @@
+@startuml
+
+!define RECTANGLE class
+
+' Definición de clases
+RECTANGLE Empresa {
+    - nombre: String
+    - direccion: String
+    + Empresa(nombre: String, direccion: String)
+    + getNombre(): String
+    + setNombre(nombre: String): void
+    + getDireccion(): String
+    + setDireccion(direccion: String): void
+    + mostrarInformacion(): void
+}
+
+RECTANGLE EmpresaTransportadora {
+    - tipoDeTransporte: String
+    + EmpresaTransportadora(nombre: String, direccion: String, tipoDeTransporte: String)
+    + getTipoDeTransporte(): String
+    + setTipoDeTransporte(tipoDeTransporte: String): void
+    + transportarMercancia(mercancia: String, destino: String): void
+    + calcularCostoEnvio(peso: double, distancia: double): void
+    + mostrarInformacion(): void
+}
+
+RECTANGLE Residuo {
+    - tipo: String
+    - peso: double
+    + Residuo(tipo: String, peso: double)
+    + getTipo(): String
+    + setTipo(tipo: String): void
+    + getPeso(): double
+    + setPeso(peso: double): void
+    + mostrarInformacion(): void
+}
+
+RECTANGLE ResiduosOrganicos {
+    - compostable: boolean
+    + ResiduosOrganicos(peso: double, compostable: boolean)
+    + isCompostable(): boolean
+    + setCompostable(compostable: boolean): void
+    + mostrarInformacion(): void
+}
+
+RECTANGLE ResiduosPlastico {
+    - codigoReciclaje: int
+    + ResiduosPlastico(peso: double, codigoReciclaje: int)
+    + getCodigoReciclaje(): int
+    + setCodigoReciclaje(codigoReciclaje: int): void
+    + mostrarInformacion(): void
+}
+
+RECTANGLE ResiduosPeligrosos {
+    - nivelDePeligro: String
+    + ResiduosPeligrosos(peso: double, nivelDePeligro: String)
+    + getNivelDePeligro(): String
+    + setNivelDePeligro(nivelDePeligro: String): void
+    + mostrarInformacion(): void
+}
+
+' Relaciones de herencia
+Empresa <|-- EmpresaTransportadora
+Residuo <|-- ResiduosOrganicos
+Residuo <|-- ResiduosPlastico
+Residuo <|-- ResiduosPeligrosos
+
+@enduml
